@@ -51,19 +51,31 @@ public class Hero {
             System.out.printf("勇者%sは道半ばで力尽きてしまった。\n", name);
         }
     }
-
+    /**
+     * カプセル化されたヒーロー名を参照するためのメソッド。
+     * @return this.name ヒーロー名
+     */
     public String getName() {
         return this.name;
     }
-
+    /**
+     * カプセル化されたヒーローのHPを参照するためのメソッド。
+     * @return this.hitPoint ヒーローのHP
+     */
     public int getHitPoint(){
         return this.hitPoint;
     }
-
+    /**
+     * カプセル化されたヒーローの攻撃力を参照するためのメソッド。
+     * @return this.attack ヒーローの攻撃力
+     */
     public int getAttack(){
         return this.attack;
     }
-
+    /**
+     * カプセル化されたヒーローの生死状態を参照するためのメソッド。
+     * @return this.dead ヒーローの生死状態。true=死亡。
+     */
     public boolean getDead(){
         return this.dead;
     }

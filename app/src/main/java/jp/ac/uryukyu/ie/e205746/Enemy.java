@@ -58,21 +58,32 @@ public class Enemy {
             System.out.printf("モンスター%sは倒れた。\n", name);
         }
     }
-
+    /**
+     * カプセル化された敵の名前を参照するためのメソッド。
+     * @return this.name 敵の名前
+     */
     public String getName() {
         return this.name;
     }
-
+    /**
+     * カプセル化された敵のHPを参照するためのメソッド。
+     * @return this.hitPoint 敵のHP
+     */
     public int getHitPoint(){
         return this.hitPoint;
     }
-
+    /**
+     * カプセル化された敵の攻撃力を参照するためのメソッド。
+     * @return this.attack 敵の攻撃力
+     */
     public int getAttack(){
         return this.attack;
     }
-
+    /**
+     * カプセル化された敵の生死状態を参照するためのメソッド。
+     * @return this.dead 敵の生死状態。true=死亡。
+     */
     public boolean getDead(){
         return this.dead;
     }
-
 }
