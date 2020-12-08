@@ -11,57 +11,36 @@ package jp.ac.uryukyu.ie.e205746;
 
 
 
-class Enemy extends LivingThing{
-    Enemy(){
-        super(name, hitPont, attack);
-    }
-    //private String name;
-    //private int hitPoint;
-    //private int attack;
-    //private boolean dead;
-
+public class Enemy extends LivingThing{
+    
     /**
      * コンストラクタ。名前、最大HP、攻撃力を指定する。
      * @param name モンスター名
      * @param maximumHP モンスターのHP
      * @param attack モンスターの攻撃力
      */
+
+    public Enemy(String name, int maximumHP, int attack) {
+        super(name, maximumHP, attack);
+    }
     
-    @Override
-    public boolean isDead(){
-        return this.dead;
-    }
-
-    @Override
-    public String getName(){
-        return this.name;
-    }
-
-    @Override
+    /*
     public void attack(LivingThing opponent){
-        if( hitPoint > 0) {
+        setHitPoint(getHitPoint() - damage);
+        if( setHitPoint() > 0) {
             int damage = (int)(Math.random() * attack);
             System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", this.name, opponent.getName(), damage);
             opponent.wounded(damage);
         }
-
+    */
     @Override
     public void wounded(int damage){
-        hitPoint -= damage;
-        if( hitPoint < 0 ) {
-            dead = true;
-            System.out.printf("モンスター%sは倒れた。\n", name);
+        setHitPoint(getHitPoint() - damage);
+        if( getHitPoint() <= 0 ) {
+            setDead(true);
+            System.out.printf("モンスター%sは倒れた。\n", getName());
         }
     }
-    /*
-    public Enemy (String name, int maximumHP, int attack) {
-        //this.name = name;
-        //hitPoint = maximumHP;
-        //this.attack = attack;
-        //dead = false;
-        System.out.printf("%sのHPは%d。攻撃力は%dです。\n", name, maximumHP, attack);
-    }
-
     /**
      * Heroへ攻撃するメソッド。
      * attackに応じて乱数でダメージを算出し、hero.wounded()によりダメージ処理を実行。
@@ -99,32 +78,21 @@ class Enemy extends LivingThing{
      * カプセル化された敵の名前を参照するためのメソッド。
      * @return this.name 敵の名前
      */
-    /*
-    public String getName() {
-        return this.name;
-    }
+    
     /**
      * カプセル化された敵のHPを参照するためのメソッド。
      * @return this.hitPoint 敵のHP
      */
-    /*
-    public int getHitPoint(){
-        return this.hitPoint;
-    }
+    
     /**
      * カプセル化された敵の攻撃力を参照するためのメソッド。
      * @return this.attack 敵の攻撃力
      */
     /*
-    public int getAttack(){
-        return this.attack;
     }
     /**
      * カプセル化された敵の生死状態を参照するためのメソッド。
      * @return this.dead 敵の生死状態。true=死亡。
      */
-    /*
-    public boolean getDead(){
-        return this.dead;
-    }
+    
 }

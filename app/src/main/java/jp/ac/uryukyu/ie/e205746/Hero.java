@@ -7,12 +7,8 @@ package jp.ac.uryukyu.ie.e205746;
  */
 
 
-class Hero extends LivingThing{
-    super(name, hitPoint, attack);
-    //private String name;
-    //private int hitPoint;
-    //private int attack;
-    //private boolean dead;
+public class Hero extends LivingThing{
+    
 
     /**
      * コンストラクタ。名前、最大HP、攻撃力を指定する。
@@ -25,12 +21,7 @@ class Hero extends LivingThing{
      */
 
     public Hero(String name, int maximumHP, int attack) {
-        super(name, hitPoint, attack);
-        //this.name = name;
-        //hitPoint = maximumHP;
-        //this.attack = attack;
-        //dead = false;
-        System.out.printf("%sのHPは%d。攻撃力は%dです。\n", name, maximumHP, attack);
+        super(name, maximumHP, attack);
     }
 
     /**
@@ -39,23 +30,18 @@ class Hero extends LivingThing{
      * @param e 攻撃対象
      */
 
-    public void attack(Enemy e) {
-        int damage = (int) (Math.random() * attack);
-        System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, e.getName(), damage);
-        e.wounded(damage);
-    }
 
     /**
      * 自身へ攻撃されたときのダメージ処理をするメソッド。 指定されたダメージを hitPoint から引き、死亡判定を行う。
      * 
      * @param damage 受けたダメージ
      */
-
+    @Override
     public void wounded(int damage) {
-        hitPoint -= damage; // hitPoint -= damage;
-        if (hitPoint < 0) {
-            dead = true;
-            System.out.printf("勇者%sは道半ばで力尽きてしまった。\n", name);
+        setHitPoint(getHitPoint() - damage);
+        if (getHitPoint() <= 0) {
+            setDead(true);
+            System.out.printf("勇者%sは道半ばで力尽きてしまった。\n", getName());
         }
     }
 
@@ -65,9 +51,6 @@ class Hero extends LivingThing{
      * @return this.name ヒーロー名
      */
 
-    public String getName() {
-        return this.name;
-    }
 
     /**
      * カプセル化されたヒーローのHPを参照するためのメソッド。
@@ -75,19 +58,14 @@ class Hero extends LivingThing{
      * @return this.hitPoint ヒーローのHP
      */
 
-    public int getHitPoint() {
-        return this.hitPoint;
-    }
-
+    
     /**
      * カプセル化されたヒーローの攻撃力を参照するためのメソッド。
      * 
      * @return this.attack ヒーローの攻撃力
      */
 
-    public int getAttack() {
-        return this.attack;
-    }
+    
 
     /**
      * カプセル化されたヒーローの生死状態を参照するためのメソッド。
@@ -95,7 +73,5 @@ class Hero extends LivingThing{
      * @return this.dead ヒーローの生死状態。true=死亡。
      */
 
-    public boolean getDead() {
-        return this.dead;
-    }
+    
 }
